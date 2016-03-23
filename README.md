@@ -2,8 +2,7 @@
 
 Powerline for Bash in pure Bash script. 
 
-![bash-powerline](https://raw.github.com/riobard/bash-powerline/master/screenshots/solarized-light-source-code-pro.png)
-![bash-powerline](https://raw.github.com/riobard/bash-powerline/master/screenshots/solarized-dark-monaco.png)
+![bash-powerline](https://raw.github.com/patrickbusch/bash-powerline/master/screenshots/screenshot-transparent.png)
 
 ## Features
 
@@ -28,11 +27,6 @@ And source it in your `.bashrc`
 
     source ~/.bash-powerline.sh
 
-For best result, use [Solarized
-colorscheme](https://github.com/altercation/solarized) for your terminal
-emulator. Or hack your own colorscheme by modifying the script. It's really
-easy.
-
 
 ## Why?
 
@@ -51,6 +45,7 @@ non-retina screens. I'd rather stick with existing unicode symbols in the fonts.
 
 
 ## See also
+* [bash-powerline](https://github.com/riobard/bash-powerline): The original repository this fork is based on.
 * [powerline](https://github.com/Lokaltog/powerline): Unified Powerline
   written in Python. This is the future of all Powerline derivatives. 
 * [vim-powerline](https://github.com/Lokaltog/vim-powerline): Powerline in Vim
