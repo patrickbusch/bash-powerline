@@ -105,8 +105,8 @@ __powerline() {
             local BG_USER="$BG_RED"
         fi
 
-        PS1=""
-        PS1+="$BG_USER$FG_BASE \u@\h $RESET"
+        PS1="\n"
+        PS1+="$BG_USER$FG_BASE3 \u@\h $RESET"
         PS1+="$BG_CYAN$FG_BASE3 \w $RESET"
         PS1+="$BG_DARKBLUE$FG_BASE3$(__git_info)$RESET"
         PS1+="\n"
