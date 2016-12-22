@@ -6,10 +6,12 @@ __powerline() {
     readonly PS_SYMBOL_DARWIN=''
     readonly PS_SYMBOL_LINUX='$'
     readonly PS_SYMBOL_OTHER='%'
-    readonly GIT_BRANCH_SYMBOL='⑂ '
-    readonly GIT_BRANCH_CHANGED_SYMBOL='+'
+    readonly GIT_BRANCH_SYMBOL=''
+    readonly GIT_BRANCH_CHANGED_SYMBOL='±'
     readonly GIT_NEED_PUSH_SYMBOL='⇡'
     readonly GIT_NEED_PULL_SYMBOL='⇣'
+    readonly SECTION_SEPARATOR=''
+    readonly PATH_SEPARATOR=''
 
     # Solarized colorscheme
     readonly FG_BASE03="\[$(tput setaf 8)\]"
@@ -87,7 +89,7 @@ __powerline() {
         [ -n "$behindN" ] && marks+=" $GIT_NEED_PULL_SYMBOL$behindN"
 
         # print the git branch segment without a trailing newline
-        printf " $GIT_BRANCH_SYMBOL$branch$marks "
+        printf " $GIT_BRANCH_SYMBOL $branch$marks "
     }
 
     ps1() {
@@ -95,22 +97,29 @@ __powerline() {
         # colors in the prompt accordingly. 
         if [ $? -eq 0 ]; then
             local BG_EXIT="$BG_GREEN"
+            local FG_EXIT="$FG_GREEN"
         else
             local BG_EXIT="$BG_RED"
+            local FG_EXIT="$FG_RED"
         fi
         
         if [ "$EUID" -ne 0 ]; then
-            local BG_USER="$BG_BASE03"
+            local BG_USER="$BG_BASE02"
+            local FG_USER="$FG_BASE02"
         else
             local BG_USER="$BG_RED"
+            local FG_USER="$FG_RED"
         fi
 
         PS1="\n"
         PS1+="$BG_USER$FG_BASE3 \u@\h $RESET"
+        #PS1+="$BG_CYAN$FG_USER$SECTION_SEPARATOR$RESET"
         PS1+="$BG_CYAN$FG_BASE3 \w $RESET"
+        #PS1+="$BG_CYAN$FG_USER$SECTION_SEPARATOR$RESET"
         PS1+="$BG_DARKBLUE$FG_BASE3$(__git_info)$RESET"
         PS1+="\n"
-        PS1+="$BG_EXIT$FG_BASE3 $PS_SYMBOL $RESET "
+        #PS1+="$BG_EXIT$FG_BASE3 $PS_SYMBOL $RESET "
+        PS1+="$BG_EXIT$FG_BASE3  $PS_SYMBOL $RESET$FG_EXIT$SECTION_SEPARATOR$RESET "
     }
 
     PROMPT_COMMAND=ps1
